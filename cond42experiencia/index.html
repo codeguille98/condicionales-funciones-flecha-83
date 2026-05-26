@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel de Experiencia</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+
+
+<body class="min-h-screen bg-blue-100 flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-3xl p-8 w-[380px]">
+
+    <h1 class="text-2xl font-bold text-blue-950 text-center mb-6">
+      Nivel de experiencia
+    </h1>
+
+    <div class="flex flex-col gap-4">
+
+      <label class="text-sm font-medium text-gray-700">
+        Introduce tu nombre
+        <input 
+          id="nombre" 
+          type="text"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <label class="text-sm font-medium text-gray-700">
+        Años en la empresa
+        <input 
+          id="años" 
+          type="number"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <button 
+        onclick="nivel()" 
+        type="button"
+        class="mt-2 py-3 bg-blue-950 text-white rounded-xl font-semibold 
+               hover:bg-blue-800 active:scale-95 transition-all duration-200 shadow-md">
+        Comprobar
+      </button>
+
+      <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl text-center">
+        <p id="experiencia" class="text-blue-950 font-medium"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <script>
+    const NOMBRE = document.getElementById("nombre");
+    const AÑOS = document.getElementById("años");
+    const EXPERIENCIA = document.getElementById("experiencia");
+
+    const nivel = () => {
+
+        let nombre = NOMBRE.value;
+        let años = Number(AÑOS.value);
+
+        if (años < 2) {
+            EXPERIENCIA.innerHTML = `${nombre} - Nivel principiante`;
+        } else if (años >= 2 && años <= 4) {
+            EXPERIENCIA.innerHTML = `${nombre} - Nivel intermedio`;
+        } else if (años > 4 && años <= 7) {
+            EXPERIENCIA.innerHTML = `${nombre} - Nivel avanzado`;
+        } else if (años > 7 && años <= 10) {
+            EXPERIENCIA.innerHTML = ` ${nombre} -Nivel experto`;
+        } else {
+            EXPERIENCIA.innerHTML = `${nombre} - Nivel gurú`;
+        }
+    }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Mayor</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+ 
+<body class="min-h-screen bg-blue-100 flex items-center justify-center">
+  <div class="bg-white shadow-2xl rounded-3xl p-8 w-[380px]">
+    <h1 class="text-2xl font-bold text-blue-950 text-center mb-6">
+      ¿Qué número es mayor?
+    </h1>
+    <div class="flex flex-col gap-4">
+
+      <label class="text-sm font-medium text-gray-700">
+        Introduce un número
+        <input 
+          id="entero1" 
+          type="number" 
+          
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <label class="text-sm font-medium text-gray-700">
+        Introduce otro número
+        <input 
+          id="entero2" 
+          type="number" 
+         
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <button 
+        onclick="comparar()" 
+        type="button"
+        class=" py-3 bg-blue-950 text-white rounded-xl font-semibold 
+               hover:bg-blue-800 active:scale-95 transition-all duration-200 shadow-md">
+        Comparar
+      </button>
+
+      <div id="cajaComparacion">
+        <p id="comparacion"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <script>
+      const ENTERO1 = document.getElementById("entero1");
+      const ENTERO2 = document.getElementById("entero2");
+      const COMPARACION = document.getElementById("comparacion");
+      const CAJA = document.getElementById("cajaComparacion");
+
+
+
+
+      const comparar = () => {
+    
+          let num1 = parseInt(ENTERO1.value);
+          let num2 = parseInt(ENTERO2.value);
+
+        
+          CAJA.className = "px-1 py-4 border rounded-xl text-center";
+
+          
+          if (isNaN(num1) && isNaN(num2)) {
+              COMPARACION.innerHTML = "Introduce dos números enteros";
+              CAJA.classList.add("bg-red-100", "border-red-300");
+              return;
+          }
+
+          if (isNaN(num1)) {
+              COMPARACION.innerHTML = "Falta el primer número";
+              CAJA.classList.add("bg-red-100", "border-red-300");
+              return;
+          }
+
+          if (isNaN(num2)) {
+              COMPARACION.innerHTML = "Falta el segundo número";
+              CAJA.classList.add("bg-red-100", "border-red-300");
+              return;
+          }
+
+          
+          if (num1 > num2) {
+              COMPARACION.innerHTML = `El número ${num1} es mayor que el número ${num2}`;
+          } else if (num2 > num1) {
+              COMPARACION.innerHTML = `El número ${num2} es mayor que el número ${num1}`;
+          } else {
+              COMPARACION.innerHTML = `Los dos números son iguales`;
+          }
+
+          
+          CAJA.classList.add("bg-blue-50", "border-blue-200");
+          COMPARACION.classList.add("text-blue-950", "font-medium");
+      }
+
+
+
+
+    </script>
+</body>
+</html>

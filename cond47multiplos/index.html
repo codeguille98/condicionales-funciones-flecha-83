@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>División y Múltiplos</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+
+<body class="min-h-screen bg-blue-100 flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-3xl p-8 w-[380px]">
+
+    <h1 class="text-2xl font-bold text-blue-950 text-center mb-6">
+      División y múltiplos
+    </h1>
+
+    <div class="flex flex-col gap-4">
+
+      <!-- DIVIDENDO -->
+      <label class="text-sm font-medium text-gray-700">
+        Dividendo
+        <input 
+          id="dividendo" 
+          type="number"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <!-- DIVISOR -->
+      <label class="text-sm font-medium text-gray-700">
+        Divisor
+        <input 
+          id="divisor" 
+          type="number"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+    
+      <button 
+        onclick="calcular()" 
+        type="button"
+        class="py-3 bg-blue-950 text-white rounded-xl font-semibold 
+               hover:bg-blue-800 active:scale-95 transition-all duration-200 shadow-md">
+        Comprobar
+      </button>
+
+      
+      <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-center">
+        <p id="resultado" class="text-blue-950 font-medium"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <script>
+      const DIVIDENDO = document.getElementById("dividendo");
+      const DIVISOR = document.getElementById("divisor");
+      const RESULTADO = document.getElementById("resultado");
+
+      const calcular = () => {
+
+          let dividendo = parseInt(DIVIDENDO.value);
+          let divisor = parseInt(DIVISOR.value);
+          /* let noValido = (divisorValue < 2 || divisorValue > 7 )
+      */
+          
+          if ( divisor < 2 || divisor > 7 ) {
+
+              RESULTADO.innerHTML = `!El divisor debe estar entre 2 y 7! `;
+              return;    
+
+          } else {
+              let esMultiplo = ((dividendo % divisor) === 0  )
+
+              if (esMultiplo){
+                  RESULTADO.innerHTML = `el ${dividendo} es  multiplo de ${divisor}`;
+              } else {
+                  RESULTADO.innerHTML = `el ${dividendo} no es  multiplo de ${divisor}`;
+
+              }
+
+        
+          } 
+          
+        
+      }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+
+<body class="min-h-screen bg-blue-100 flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-3xl p-8 w-[420px]">
+
+    <h1 class="text-2xl font-bold text-blue-950 text-center mb-6">
+       Restaurante
+    </h1>
+
+    <div class="flex flex-col gap-5">
+
+      
+      <label class="text-sm font-medium text-gray-700">
+        ¿Qué plato quieres?
+        <select 
+          id="plato"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+          <option value="carne">Carne</option>
+          <option value="pasta">Pasta</option>
+          <option value="risotto">Risotto</option>
+        </select>
+      </label>
+
+      
+      <div>
+        <p class="text-sm font-medium text-gray-700 mb-2">
+          Preferencias o intolerancias
+        </p>
+
+        <div class="flex flex-col gap-2 text-gray-700 text-sm">
+
+          <label class="flex items-center gap-2">
+            <input id="vegano" type="checkbox" class="accent-blue-900">
+            Vegano
+          </label>
+
+          <label class="flex items-center gap-2">
+            <input id="lactosa" type="checkbox" class="accent-blue-900">
+            Intolerancia a la lactosa
+          </label>
+
+          <label class="flex items-center gap-2">
+            <input id="gluten" type="checkbox" class="accent-blue-900">
+            Intolerancia al gluten
+          </label>
+
+        </div>
+      </div>
+
+      
+      <button 
+        onclick="pedir()" 
+        type="button"
+        class="py-3 bg-blue-950 text-white rounded-xl font-semibold 
+               hover:bg-blue-800 active:scale-95 transition-all duration-200 shadow-md">
+        Hacer pedido
+      </button>
+
+     
+      <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-center">
+        <p id="pedido" class="text-blue-950 font-medium"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+    <script>
+      const PLATO = document.getElementById("plato");
+      const VEGANO = document.getElementById("vegano");
+      const GLUTEN = document.getElementById("gluten");
+      const LACTOSA = document.getElementById("lactosa");
+      const PEDIDO = document.getElementById("pedido");
+
+
+      const pedir = () => {
+
+          let plato = (PLATO.value);
+          let vegano = (VEGANO.checked);
+          let gluten = (GLUTEN.checked);
+          let lactosa = (LACTOSA.checked);
+          let noPuedeComer = ((plato == "carne" && vegano) || (plato == "pasta" && gluten) || (plato == "risotto" && lactosa) );
+          
+
+          if (noPuedeComer ) {
+
+              PEDIDO.innerHTML = `Usted no puede comer este plato`;
+
+          } else {
+              PEDIDO.innerHTML = `Perfecto, pedido correcto`;
+          }
+            
+          
+      }
+
+
+    </script>
+</body>
+</html>

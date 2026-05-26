@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+</head>
+
+<body class="min-h-screen bg-blue-100 flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-3xl p-8 w-[380px]">
+
+    <h1 class="text-2xl font-bold text-blue-950 text-center mb-6">
+      Operaciones básicas
+    </h1>
+
+    <div class="flex flex-col gap-4">
+
+      <label class="text-sm font-medium text-gray-700">
+        Número 1
+        <input 
+          id="numero1" 
+          type="number"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <label class="text-sm font-medium text-gray-700">
+        Número 2
+        <input 
+          id="numero2" 
+          type="number"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+      </label>
+
+      <label class="text-sm font-medium text-gray-700">
+        Operación
+        <select 
+          id="operador"
+          class="mt-1 w-full p-2 rounded-lg border border-gray-300 
+                 focus:outline-none focus:ring-2 focus:ring-blue-900"
+        >
+          <option value="+">Sumar</option>
+          <option value="-">Restas</option>
+          <option value="*">Multiplicar</option>
+          <option value="/">Dividir</option>
+        </select>
+      </label>
+
+      <button 
+        onclick="calcula()" 
+        type="button"
+        class="py-3 bg-blue-950 text-white rounded-xl font-semibold 
+               hover:bg-blue-800 active:scale-95 transition-all duration-200 shadow-md">
+        Calcular
+      </button>
+
+      <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-center">
+        <p id="resultado" class="text-blue-950 font-medium"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+    <script>
+      const NUMERO1 = document.getElementById("numero1");
+      const NUMERO2 = document.getElementById("numero2");
+      const RES_OPERACION = document.getElementById("resultado");
+      const OPERADOR = document.getElementById("operador");
+
+
+
+      const calcula = () =>  {
+
+          let numero1 = Number(NUMERO1.value);
+          let numero2 = Number(NUMERO2.value);
+          let operador = (OPERADOR.value);
+          let textoOperacion = OPERADOR.options[OPERADOR.selectedIndex].text;
+        
+        
+          let operacion;
+        
+          if (operador == "+"){
+            operacion = numero1 + numero2; 
+            
+          } else if (operador == "-") {
+              operacion = numero1 - numero2;  
+
+          } else if (operador == "*") {
+              operacion = numero1 * numero2; 
+              
+          }else if ( numero2 == 0 && operador == "/") {
+              RES_OPERACION.innerHTML = `No se puede dividir por 0.`
+              return
+              
+              
+          }else { operacion = numero1 / numero2; }
+
+          
+          RES_OPERACION.innerHTML = `El resultado de ${textoOperacion} el numero ${numero1} y el numero ${numero2} es: ${operacion}`
+          
+          
+      }
+
+
+    </script>
+</body>
+</html>
